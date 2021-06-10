@@ -1,0 +1,6 @@
+name: stactools-cgls_lc100
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - gdal

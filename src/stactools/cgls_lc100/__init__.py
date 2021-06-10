@@ -14,3 +14,6 @@ def register_plugin(registry):
     from stactools.cgls_lc100 import commands
 
     registry.register_subcommand(commands.create_cgls_lc100_command)
+
+
+__version__ = '0.1.5'

@@ -1,0 +1,7 @@
+FROM stactools-cgls_lc100:latest
+
+RUN conda install -c conda-forge pandoc
+
+COPY . /src/stactools-cgls_lc100
+RUN pip install -r /src/stactools-cgls_lc100/requirements-dev.txt
+WORKDIR /src/stactools-cgls_lc100
