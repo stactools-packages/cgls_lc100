@@ -4,7 +4,9 @@ from tempfile import TemporaryDirectory
 import pystac
 
 from stactools.cgls_lc100.commands import create_cgls_lc100_command
-from tests.utils import (TestData, CliTestCase)
+from stactools.testing import CliTestCase
+
+from tests import test_data
 
 # Created from:
 #
@@ -12,7 +14,7 @@ from tests.utils import (TestData, CliTestCase)
 #   PROBAV_LC100_global_v3.0.1_2019-nrt_Change-Confidence-layer_EPSG-4326.tif?download=1
 #
 # and subsetted via `gdal_translate -projwin -180 80 -179 79`
-DATA_PATH = 'data-files/cgls_lc100/PROBAV_LC100_global_v3.0.1_2019-nrt_ccl_subset.tif'
+DATA_PATH = 'data-files/PROBAV_LC100_global_v3.0.1_2019-nrt_ccl_subset.tif'
 
 
 class CreateItemTest(CliTestCase):
@@ -20,7 +22,7 @@ class CreateItemTest(CliTestCase):
         return [create_cgls_lc100_command]
 
     def test_create_item(self):
-        tif_href = TestData.get_path(DATA_PATH)
+        tif_href = test_data.get_path(DATA_PATH)
 
         with TemporaryDirectory() as tmp_dir:
             cmd = ['cgls_lc100', 'create-item', '--cogify', tif_href, tmp_dir]
